@@ -70,6 +70,10 @@
     <Compile Include="Migrations\202005021259099_cos3.designer.cs">
       <DependentUpon>202005021259099_cos3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005032009315_AddProcedures.cs" />
+    <Compile Include="Migrations\202005032009315_AddProcedures.designer.cs">
+      <DependentUpon>202005032009315_AddProcedures.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,6 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005021259099_cos3.resx">
       <DependentUpon>202005021259099_cos3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005032009315_AddProcedures.resx">
+      <DependentUpon>202005032009315_AddProcedures.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -101,6 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\Procedures.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
