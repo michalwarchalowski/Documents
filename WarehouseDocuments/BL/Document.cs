@@ -6,6 +6,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
+using System.Data.SqlClient;
+
 
 namespace WarehouseDocuments.BL
 {
@@ -16,9 +19,12 @@ namespace WarehouseDocuments.BL
         public DateTime DocumentDate { get; set; }
         public int CustomerNumber { get; set; }
 
+
+        string connString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         public DataTable GetAllDocuments()
         {
-            using (SqlConnection sqlCon = new SqlConnection(@"Data Source =(localdb)\MSSQLLocalDB; Initial Catalog=WarehouseDocuments1; Integrated Security=True"))
+            
+            using (SqlConnection sqlCon = new SqlConnection(connString))
             {
                 sqlCon.Open();
                 SqlDataAdapter sqlDa = new SqlDataAdapter("DocumentViewAll", sqlCon);
@@ -31,7 +37,7 @@ namespace WarehouseDocuments.BL
 
         public DataSet OpenDocumentID(int inDocumentID)
         {
-            using (SqlConnection sqlCon = new SqlConnection(@"Data Source =(localdb)\MSSQLLocalDB; Initial Catalog=WarehouseDocuments1; Integrated Security=True"))
+            using (SqlConnection sqlCon = new SqlConnection(connString))
             {
                 sqlCon.Open();
                 SqlDataAdapter sqlDa = new SqlDataAdapter("DocumentViewByID", sqlCon);

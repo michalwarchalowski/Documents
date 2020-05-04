@@ -10,13 +10,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using WarehouseDocuments.BL;
+using System.Configuration;
 
 namespace WarehouseDocuments
 {
     
     public partial class Form1 : Form
     {
-        string strConnectionString = @"Data Source =(localdb)\MSSQLLocalDB; Initial Catalog=WarehouseDocuments1; Integrated Security=True";
+        string connString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+     
         int inDocumentID = 0;
         Customer customer;
         Document document;
@@ -93,7 +95,7 @@ namespace WarehouseDocuments
 
 
                 int _DocumentID = 0;
-                using (SqlConnection sqlCon = new SqlConnection(strConnectionString))
+                using (SqlConnection sqlCon = new SqlConnection(connString))
                 {
                     sqlCon.Open();
                     SqlCommand sqlCmd = new SqlCommand("DocumentAddOrEdit", sqlCon);
@@ -106,7 +108,7 @@ namespace WarehouseDocuments
                     _DocumentID = Convert.ToInt32(sqlCmd.ExecuteScalar());
                 }
 
-                using (SqlConnection sqlCon = new SqlConnection(strConnectionString))
+                using (SqlConnection sqlCon = new SqlConnection(connString))
                 {
                     sqlCon.Open();
                     foreach (DataGridViewRow dgvRow in dgvDetails.Rows)
@@ -134,7 +136,7 @@ namespace WarehouseDocuments
                 }
                 FillDocumentDataGridView();
                 Clear();
-                MessageBox.Show("Udalo sie");
+                MessageBox.Show("Zapisanie dokumentu powiodło się");
             }
         }
 
@@ -156,7 +158,7 @@ namespace WarehouseDocuments
                 dgvDetails.DataSource = ds.Tables[1];
 
                 btnDelete.Enabled = true;
-                btnSave.Text = "Update";
+                btnSave.Text = "Uaktualnij";
                 tabControl1.SelectedIndex = 0;
                 TotalPrice();
 
@@ -169,7 +171,7 @@ namespace WarehouseDocuments
             DataGridViewRow dgvRow = dgvDetails.CurrentRow;
             if (dgvRow.Cells["ArticleID"].Value != DBNull.Value)
             {
-                if (MessageBox.Show("Are You Sure to Delete this Record ?", "MXXXX", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Czy chcesz skasować tą pozycję ?", "Kasowanie pozycji", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
 
                     article.DeleteArticle(Convert.ToInt32(dgvRow.Cells["ArticleID"].Value));
@@ -183,13 +185,13 @@ namespace WarehouseDocuments
         private void btnDelete_Click(object sender, EventArgs e)
         {
             document = new Document();
-            if (MessageBox.Show("Are you Sure to Delete this Record ?", "Master Detail CRUD", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Czy chcesz skasować ten dokument ?", "Kasowanie dokumentu", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
 
                 document.DeleteDocument(inDocumentID);
                 Clear();
                 FillDocumentDataGridView();
-                MessageBox.Show("Deleted Successfully");
+                MessageBox.Show("Skasowano dokument");
 
             }
         }

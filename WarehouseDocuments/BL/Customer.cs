@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -16,9 +17,11 @@ namespace WarehouseDocuments.BL
         public string CustomerName { get; set; }
 
 
-       public DataTable RefreshCustomerList()
+
+        string connString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        public DataTable RefreshCustomerList()
         {
-            using (SqlConnection sqlCon = new SqlConnection(@"Data Source =(localdb)\MSSQLLocalDB; Initial Catalog=WarehouseDocuments1; Integrated Security=True"))
+            using (SqlConnection sqlCon = new SqlConnection(connString))
             {
                 string query = "select * from customers";
                 //  SqlCommand cmd = new SqlCommand(query, sqlCon);
@@ -38,7 +41,7 @@ namespace WarehouseDocuments.BL
 
         public void CreateNewCustomer(string customerName)
         {
-            using (SqlConnection sqlCon = new SqlConnection(@"Data Source =(localdb)\MSSQLLocalDB; Initial Catalog=WarehouseDocuments1; Integrated Security=True"))
+            using (SqlConnection sqlCon = new SqlConnection(connString))
             {
                 sqlCon.Open();
                 SqlCommand cmd = new SqlCommand("CreateNewCustomer", sqlCon);

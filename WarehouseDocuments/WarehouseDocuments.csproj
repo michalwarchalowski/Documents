@@ -42,8 +42,18 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.6.5.1\lib\net461\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=6.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.6.5.1\lib\net461\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.5.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.5.1\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -66,9 +76,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005021259099_cos3.cs" />
-    <Compile Include="Migrations\202005021259099_cos3.designer.cs">
-      <DependentUpon>202005021259099_cos3.cs</DependentUpon>
+    <Compile Include="Migrations\202005021259099_CreateDT.cs" />
+    <Compile Include="Migrations\202005021259099_CreateDT.designer.cs">
+      <DependentUpon>202005021259099_CreateDT.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202005032009315_AddProcedures.cs" />
     <Compile Include="Migrations\202005032009315_AddProcedures.designer.cs">
@@ -80,8 +90,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005021259099_cos3.resx">
-      <DependentUpon>202005021259099_cos3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005021259099_CreateDT.resx">
+      <DependentUpon>202005021259099_CreateDT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005032009315_AddProcedures.resx">
       <DependentUpon>202005032009315_AddProcedures.cs</DependentUpon>

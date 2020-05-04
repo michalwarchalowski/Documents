@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -20,10 +21,10 @@ namespace WarehouseDocuments.BL
         public decimal GrossPrice { get; set; }
 
 
-
+        string connString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         public void DeleteArticle(int ArticleID)
         {
-            using (SqlConnection sqlCon = new SqlConnection(@"Data Source =(localdb)\MSSQLLocalDB; Initial Catalog=WarehouseDocuments1; Integrated Security=True"))
+            using (SqlConnection sqlCon = new SqlConnection(connString))
             {
                 sqlCon.Open();
                 SqlCommand sqlCmd = new SqlCommand("ArticleDelete", sqlCon);
