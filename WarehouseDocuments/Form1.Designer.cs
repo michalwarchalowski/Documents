@@ -99,6 +99,7 @@
             this.tabPage1.Size = new System.Drawing.Size(641, 494);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Szczegóły";
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // cmbCustomer
             // 

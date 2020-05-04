@@ -33,6 +33,8 @@ namespace WarehouseDocuments
         {
             FillDocumentDataGridView();
             RefreshCustomerList();
+
+           
         }
 
         private void Reset_Click(object sender, EventArgs e)
@@ -75,13 +77,20 @@ namespace WarehouseDocuments
         {
 
             customer = new Customer();
-            cmbCustomer.DataSource=customer.RefreshCustomerList();
+
+            cmbCustomer.DataSource = customer.RefreshCustomerList();
             cmbCustomer.DisplayMember = "CustomerName";
             cmbCustomer.ValueMember = "CustomerNumber";
 
             cmbCustomer1.DataSource = customer.RefreshCustomerList();
             cmbCustomer1.DisplayMember = "CustomerName";
             cmbCustomer1.ValueMember = "CustomerNumber";
+
+            cmbCustomer.DataSource=customer.RefreshCustomerList();
+            cmbCustomer.DisplayMember = "CustomerName";
+            cmbCustomer.ValueMember = "CustomerNumber";
+
+     
 
 
         }
@@ -254,6 +263,11 @@ namespace WarehouseDocuments
         private void button1_Click(object sender, EventArgs e)
         {
             CreateNewCustomer();
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

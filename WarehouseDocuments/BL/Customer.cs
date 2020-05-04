@@ -28,6 +28,10 @@ namespace WarehouseDocuments.BL
                 SqlDataAdapter adapter = new SqlDataAdapter(query, sqlCon);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
+                if (dt.Rows.Count == 0)
+                {
+                    CreateNewCustomer("Firma 1");
+                }
                 DataRow topItem = dt.NewRow();
                 topItem[0] = 0;
                 topItem[1] = "-Select-";
