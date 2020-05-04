@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,8 @@ namespace WarehouseDocuments.BL
 {
     class AppDbContext:DbContext
     {
-        public AppDbContext():base(@"Data Source =(localdb)\MSSQLLocalDB; Initial Catalog=WarehouseDocuments1; Integrated Security=True")
+        static string connString =  ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        public AppDbContext() : base(connString)
         {
 
         }
